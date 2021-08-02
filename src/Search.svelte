@@ -178,17 +178,7 @@
                         Bedürfnissen ausrichten und so immer weiter verbessern. Probieren Sie es gern aus!
                     </p>
                     <p>
-                        Die Teile des Codes, die frei zugänglich sind, finden Sie unter <a
-                            href="https://github.com/coverified"
-                            title="CoVerified GitHub"
-                            rel="noopener"
-                            target="_blank"
-                        >
-                            <svg role="presentation">
-                                <use xlink:href="#forward" />
-                            </svg>
-                            https://github.com/coverified</a
-                        >.
+                        Die Teile des Codes, die frei zugänglich sind, finden Sie hier:
                     </p>
                     <a href="https://github.com/coverified" title="CoVerified GitHub" rel="noopener" target="_blank">
                         <span class="link">
