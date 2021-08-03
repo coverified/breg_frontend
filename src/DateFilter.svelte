@@ -12,21 +12,21 @@
     let lastSevenDays = false;
     let lastThirtyDays = false;
 
+    function formatDate(date) {
+        // add leading zeroes to single-digit day/month
+        let d = date;
+        let year = new Date();
+        // take last 2 digits of every component
+        d = ['0' + (d.getMonth() + 1), '0' + d.getDate()].map((component) => component.slice(-2));
+        // join the components into date
+        return year.getFullYear() + '-' + d.slice(0, 3).join('-');
+    }
+
     const today = new Date();
     const todayFormatted =
         today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
-    const pastSevenDays =
-        today.getFullYear() +
-        '-' +
-        ('0' + (today.getMonth() + 1)).slice(-2) +
-        '-' +
-        ('0' + Math.abs(today.getDate() - 7)).slice(-2);
-    const pastThirtyDays =
-        today.getFullYear() +
-        '-' +
-        ('0' + (today.getMonth() + 1)).slice(-2) +
-        '-' +
-        ('0' + Math.abs(today.getDate() - 30)).slice(-2);
+    const pastSevenDays = formatDate(new Date(new Date().setDate(new Date().getDate() - 7)));
+    const pastThirtyDays = formatDate(new Date(new Date().setDate(new Date().getDate() - 30)));
 
     function setStartDate(firstDate) {
         startDate = firstDate;
@@ -78,7 +78,7 @@
     <label>
         <input
             type="checkbox"
-            on:change={() => handleChange(year2021, '2021-01-01', '2021-12-31')}
+            on:change={() => handleChange(year2021, '2021-01-01', todayFormatted)}
             bind:checked={year2021}
         />
         2021
