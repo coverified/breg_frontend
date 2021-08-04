@@ -2,157 +2,113 @@
     export let startDate;
     export let endDate;
 
-    let firstDate;
-    let secondDate;
-    let start;
-    let end;
-    let year2021 = false;
-    let year2020 = false;
-    let year2019 = false;
-    let lastSevenDays = false;
-    let lastThirtyDays = false;
-
     const today = new Date();
-    const todayFormatted =
-        today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
-    const pastSevenDays =
-        today.getFullYear() +
-        '-' +
-        ('0' + (today.getMonth() + 1)).slice(-2) +
-        '-' +
-        ('0' + Math.abs(today.getDate() - 7)).slice(-2);
-    const pastThirtyDays =
-        today.getFullYear() +
-        '-' +
-        ('0' + (today.getMonth() + 1)).slice(-2) +
-        '-' +
-        ('0' + Math.abs(today.getDate() - 30)).slice(-2);
+    const sevenDaysAgo = new Date(today - 7 * 24 * 60 * 60 * 1000);
+    const thirtyDaysAgo = new Date(today - 30 * 24 * 60 * 60 * 1000);
+    const numberOfYearsPastPresets = 2;
+    const presets = [];
 
-    function setStartDate(firstDate) {
-        startDate = firstDate;
-        return startDate;
+    presets.push({
+        start: new Date(`${today.getFullYear()}-01-01`),
+        end: today,
+        label: today.getFullYear(),
+        value: false,
+    });
+
+    for (let i = 1; i <= numberOfYearsPastPresets; i++) {
+        const start = new Date(`${today.getFullYear() - i}-01-01`);
+        const end = new Date(`${today.getFullYear() - i}-12-31`);
+
+        presets.push({
+            start: start,
+            end: end,
+            label: start.getFullYear(),
+            value: false,
+        });
     }
 
-    function setEndDate(secondDate) {
-        endDate = secondDate;
-        return endDate;
+    presets.push({
+        start: sevenDaysAgo,
+        end: today,
+        label: 'Letzten 7 Tage',
+        value: false,
+    });
+
+    presets.push({
+        start: thirtyDaysAgo,
+        end: today,
+        label: 'Letzten 30 Tage',
+        value: false,
+    });
+
+    const formatDateForDom = date => date.toISOString().slice(0, 10);
+
+    const clearCheckboxes = () => {
+        for (let i = 0; i < presets.length; i++) {
+            presets[i].value = false;
+        }
     }
 
-    const handleChange = (checkedDate, firstDate, secondDate) => {
-        let firstDateIso = new Date(firstDate).toISOString();
-        let secondDateIso = new Date(secondDate).toISOString();
+    const clearDates = () => {
+        startDate = undefined;
+        endDate = undefined;
+        clearCheckboxes();
+    }
 
-        // Reset Dates and Btns
-        start.value = '';
-        end.value = '';
-        setStartDate('');
-        setEndDate('');
-        year2021 = false;
-        year2020 = false;
-        year2019 = false;
-        lastSevenDays = false;
-        lastThirtyDays = false;
-        // Set Dates
-        start.value = firstDate;
-        end.value = secondDate;
-        setStartDate(firstDateIso);
-        setEndDate(secondDateIso);
-        // Reset all if box is unchecked
-        checkedDate ? handleFullClear() : '';
+    const handlePresetClick = (event, preset) => {
+        const hasBeenChecked = event.target.checked;
+
+        clearCheckboxes();
+
+        if (hasBeenChecked) {
+            startDate = formatDateForDom(preset.start);
+            endDate = formatDateForDom(preset.end);
+            preset.value = true;
+        } else {
+            clearDates();
+        }
     };
-
-    function handleFullClear() {
-        start.value = '';
-        end.value = '';
-        setStartDate('');
-        setEndDate('');
-        year2021 = false;
-        year2020 = false;
-        year2019 = false;
-        lastSevenDays = false;
-        lastThirtyDays = false;
-    }
 </script>
 
-<li>
-    <label>
-        <input
-            type="checkbox"
-            on:change={() => handleChange(year2021, '2021-01-01', '2021-12-31')}
-            bind:checked={year2021}
-        />
-        2021
-    </label>
-</li>
-<li>
-    <label>
-        <input
-            type="checkbox"
-            on:change={() => handleChange(year2020, '2020-01-01', '2020-12-31')}
-            bind:checked={year2020}
-        />
-        2020
-    </label>
-</li>
-<li>
-    <label>
-        <input
-            type="checkbox"
-            on:change={() => handleChange(year2019, '2019-01-01', '2019-12-31')}
-            bind:checked={year2019}
-        />
-        2019
-    </label>
-</li>
-<li>
-    <label>
-        <input
-            type="checkbox"
-            on:change={() => handleChange(lastSevenDays, pastSevenDays, todayFormatted)}
-            bind:checked={lastSevenDays}
-        />
-        Letzten 7 Tage
-    </label>
-</li>
-<li>
-    <label>
-        <input
-            type="checkbox"
-            on:change={() => handleChange(lastThirtyDays, pastThirtyDays, todayFormatted)}
-            bind:checked={lastThirtyDays}
-        />
-        Letzten 30 Tage
-    </label>
-</li>
+{#each presets as preset}
+    <li>
+        <label>
+            <input type="checkbox"
+                   bind:checked={preset.value}
+                   on:change={e => handlePresetClick(e, preset)}
+            />
+            {preset.label}
+        </label>
+    </li>
+{/each}
 <li>
     <label for="startPeriod" class="date-picker">
         <span>von</span>
         <input
-            type="date"
-            placeholder="TT.MM.JJJJ"
-            id="startPeriod"
-            name="startPeriod"
-            bind:this={start}
-            bind:value={firstDate}
-            on:blur={() => setStartDate(firstDate)}
+                type="date"
+                placeholder="TT.MM.JJJJ"
+                id="startPeriod"
+                name="startPeriod"
+                max={endDate || formatDateForDom(today)}
+                bind:value={startDate}
         />
     </label>
     <label for="endPeriod" class="date-picker">
         <span>bis</span>
         <input
-            type="date"
-            placeholder="TT.MM.JJJJ"
-            id="endPeriod"
-            name="endPeriod"
-            bind:this={end}
-            bind:value={secondDate}
-            on:blur={() => setEndDate(secondDate)}
+                type="date"
+                placeholder="TT.MM.JJJJ"
+                id="endPeriod"
+                name="endPeriod"
+                min={startDate}
+                max={formatDateForDom(today)}
+                bind:value={endDate}
         />
     </label>
     {#if startDate || endDate}
-        <button type="button" class=" btn btn-delete" on:click|preventDefault={handleFullClear}>
+        <button type="button" class=" btn btn-delete" on:click|preventDefault={clearDates}>
             <svg role="presentation">
-                <use xlink:href="#close" />
+                <use xlink:href="#close"/>
             </svg>
         </button>
     {/if}
@@ -176,6 +132,7 @@
         span {
             font-size: 1.125rem;
         }
+
         input {
             display: block;
             width: 11.25rem;
