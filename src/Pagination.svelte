@@ -28,10 +28,6 @@
         arr_pages = buildArr(currentPage, num_pages);
     }
 
-    $: if (currentPage) {
-        setArrPages();
-    }
-
     $: if (num_items) {
         num_pages = Math.ceil(num_items / per_page);
         currentPage = 0;
@@ -41,6 +37,7 @@
     function setCurrent(i) {
         if (isNaN(i)) return;
         currentPage = i;
+        setArrPages();
         return currentPage;
     }
 
