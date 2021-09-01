@@ -46,7 +46,7 @@
                     {#if item.url.source.id}
                         <span class="meta__source-icon">
                             <svg role="presentation">
-                                <use xlink:href="#{item.url.source.acronym.toLowerCase()}"/>
+                                <use xlink:href="#{item.url.source.acronym.toLowerCase()}" />
                             </svg>
                         </span>
                     {/if}
@@ -255,6 +255,34 @@
 
     .bpb {
         background-color: #f2ccd8;
+    }
+
+    .bsi {
+        background-color: #cce6e8;
+    }
+
+    .ozg {
+        background-color: #cce7db;
+    }
+
+    .bmbf {
+        background-color: #fef9d8;
+    }
+
+    .bmu {
+        background-color: #dee5d7;
+    }
+
+    .bmg {
+        background-color: #f5dcd7;
+    }
+
+    .bmjv {
+        background-color: #ccdbe4;
+    }
+
+    .bmvg {
+        background-color: #dddfe0;
     }
 
     @media (min-width: 576px) {
