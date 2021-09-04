@@ -43,13 +43,6 @@
         <article>
             <a class="content" href={item.url.name} target="_blank" rel="noopener" title={`Direkt zu "${item.name}"`}>
                 <p class="meta">
-                    {#if item.url.source.id}
-                        <span class="meta__source-icon">
-                            <svg role="presentation">
-                                <use xlink:href="#{item.url.source.acronym.toLowerCase()}" />
-                            </svg>
-                        </span>
-                    {/if}
                     {#if item.url.source?.name}
                         {item.url.source.name}
                     {/if}
@@ -148,15 +141,6 @@
         display: flex;
         align-items: center;
         font-size: 0.8125rem;
-
-        &__source-icon {
-            margin-right: 1rem;
-
-            svg {
-                height: 2.125rem;
-                width: 2.125rem;
-            }
-        }
 
         &__date {
             margin-bottom: 1rem;
@@ -307,16 +291,6 @@
 
         .meta {
             font-size: 1.125rem;
-
-            &__source-icon {
-                svg {
-                    height: 3.375rem;
-                    width: 3.375rem;
-                }
-            }
         }
-    }
-
-    @media (min-width: 992px) {
     }
 </style>
