@@ -158,15 +158,16 @@
                 display: inline-block;
                 padding: 0.3125rem;
                 position: relative;
+                top: 0.3125rem;
                 margin-left: auto;
                 transform: rotate(45deg);
-                transition: transform 0.75s cubic-bezier(0.39, 0.575, 0.565, 1);
+                transition: transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
             }
 
             &.active {
                 &:after {
                     transform: rotate(225deg);
-                    transition: transform 0.75s cubic-bezier(0.39, 0.575, 0.565, 1);
+                    transition: transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
                 }
             }
         }

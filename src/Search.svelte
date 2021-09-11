@@ -177,9 +177,7 @@
                         Prototypen gemeinsam weiter. Mit Ihrem Feedback können wir die Software nah an Ihren
                         Bedürfnissen ausrichten und so immer weiter verbessern. Probieren Sie es gern aus!
                     </p>
-                    <p>
-                        Die Teile des Codes, die frei zugänglich sind, finden Sie hier:
-                    </p>
+                    <p>Die Teile des Codes, die frei zugänglich sind, finden Sie hier:</p>
                     <a href="https://github.com/coverified" title="CoVerified GitHub" rel="noopener" target="_blank">
                         <span class="link">
                             <svg role="presentation">
@@ -352,7 +350,7 @@
 
     ul.grid-view {
         display: grid;
-        grid-template-columns: minmax(auto, 1fr);
+        grid-template-columns: repeat(2, minmax(auto, 11.75rem));
         justify-content: center;
         padding: 0 1.5rem;
         margin: 2rem 0 7rem 0;

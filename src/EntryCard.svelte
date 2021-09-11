@@ -14,7 +14,7 @@
         const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
         const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
         let rowSpan = Math.ceil(
-            (item.querySelector('.content').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap)
+            (item.querySelector('.container').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap)
         );
         item.style.gridRowEnd = 'span ' + rowSpan;
     }
@@ -35,63 +35,64 @@
 </script>
 
 {#if item}
-    <li
-        class="{open ? 'open' : ''}
-        {item.url.source.acronym.toLowerCase()}
-        item"
-    >
+    <li class="{open ? 'open' : ''} item">
         <article>
-            <a class="content" href={item.url.name} target="_blank" rel="noopener" title={`Direkt zu "${item.name}"`}>
-                <p class="meta">
+            <a class="container" href={item.url.name} target="_blank" rel="noopener" title={`Direkt zu "${item.name}"`}>
+                {#if item.img}
+                    <img class="content_image" src={item.img} alt={item.name} />
+                {/if}
+                <p class="meta {item.url.source.acronym.toLowerCase()}">
                     {#if item.url.source?.name}
                         {item.url.source.name}
                     {/if}
                 </p>
-                <h1>
-                    {item.name}
-                </h1>
-                {#if item.date}
-                    <p class="meta__date">
-                        {new Date(item.date).toLocaleDateString()}
-                    </p>
-                {/if}
-                {#if item.content || item.summary}
-                    <p class="item_content">
-                        {#if open}
-                            {#if item.summary}
-                                {cutContentLength(item.summary, 420)}
+                <div class="content">
+                    <h1>
+                        {item.name}
+                    </h1>
+                    {#if item.date}
+                        <p class="meta__date">
+                            {new Date(item.date).toLocaleDateString()}
+                        </p>
+                    {/if}
+                    {#if item.content || item.summary}
+                        <p class="content_item">
+                            {#if open}
+                                {#if item.summary}
+                                    {cutContentLength(item.summary, 420)}
+                                {:else}
+                                    {cutContentLength(item.content, 420)}
+                                {/if}
+                            {:else if item.summary}
+                                {cutContentLength(item.summary)}
                             {:else}
-                                {cutContentLength(item.content, 420)}
+                                {cutContentLength(item.content)}
                             {/if}
-                        {:else if item.summary}
-                            {cutContentLength(item.summary)}
-                        {:else}
-                            {cutContentLength(item.content)}
-                        {/if}
-                    </p>
-                    <button
-                        class="btn-more"
-                        on:click|preventDefault={() => {
-                            open = !open;
-                        }}
-                    >
-                        weitere Informationen
-                        <svg role="presentation">
-                            <use xlink:href="#chevron" />
-                        </svg>
-                    </button>
-                {/if}
-                {#if open}
-                    {#each item.tags.slice(0, 5) as tag (tag.id)}
-                        <TagButton {tag} />
-                    {/each}
-                    <button class="btn-link">
-                        <svg role="presentation">
-                            <use xlink:href="#forward" />
-                        </svg>
-                        mehr erfahren
-                    </button>
-                {/if}
+                        </p>
+                        <button
+                            class="btn-more"
+                            on:click|preventDefault={() => {
+                                open = !open;
+                            }}
+                        >
+                            weitere Informationen
+                            <svg role="presentation">
+                                <use xlink:href="#chevron" />
+                            </svg>
+                        </button>
+                    {/if}
+                    {#if open}
+                        {#each item.tags.slice(0, 5) as tag (tag.id)}
+                            <TagButton {tag} />
+                        {/each}
+                        <button class="btn-link">
+                            <svg role="presentation">
+                                <use xlink:href="#forward" />
+                            </svg>
+                            mehr erfahren
+                        </button>
+                    {/if}
+                </div>
             </a>
         </article>
     </li>
@@ -106,20 +107,25 @@
         position: relative;
     }
 
-    .content {
+    .container {
         display: block;
         text-decoration: none;
         color: #000;
-        padding: 0.6875rem 0.625rem 2.5rem 0.625rem;
+    }
 
-        &:before {
-            content: '';
-            display: block;
-            position: absolute;
+    .content {
+        padding: 0.8125rem 0.75rem 2.5rem 0.75rem;
+
+        &_item {
+            margin-top: 0.3125rem;
+            word-break: break-word;
+        }
+
+        &_image {
+            object-fit: cover;
+            height: 114px;
             width: 100%;
-            height: calc(100% - 2.625rem);
-            left: 0;
-            top: 0;
+            margin-bottom: -7px;
         }
     }
 
@@ -141,14 +147,12 @@
         display: flex;
         align-items: center;
         font-size: 0.8125rem;
+        margin: 0;
+        padding: 0.3125rem 0.75rem 0.3125em 0.75rem;
 
         &__date {
             margin-bottom: 1rem;
         }
-    }
-
-    .item_content {
-        margin-top: 0.3125rem;
     }
 
     button {
@@ -280,8 +284,13 @@
         h1 {
             font-size: 2rem;
         }
+
         .content {
-            padding: 0.75rem 1.75rem 2.5rem 1.75rem;
+            padding: 1.3125rem 1.75rem 1rem 1.75rem;
+
+            &_image {
+                height: 15.25rem;
+            }
         }
 
         p {
@@ -291,6 +300,7 @@
 
         .meta {
             font-size: 1.125rem;
+            padding: 0.75rem 1.75rem 0.9375rem 1.75rem;
         }
     }
 </style>
