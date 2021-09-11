@@ -51,6 +51,7 @@
                         id
                         name
                     }
+                    img
                     url {
                         name
                         source {
