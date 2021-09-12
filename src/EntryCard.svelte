@@ -40,10 +40,10 @@
         <article>
             <a class="container" href={item.url.name} target="_blank" rel="noopener" title={`Direkt zu "${item.name}"`}>
                 {#if item.img}
-                    <picture class="content_image">
+                    <picture>
                         <source media="(min-width: 768px)" srcset={`${baseUrl}/i/21/1?url=${encodeURIComponent(item.img)}, ${baseUrl}/i/22/2?url=${encodeURIComponent(item.img)} 2x, ${baseUrl}/i/23/3?url=${encodeURIComponent(item.img)} 3x`}>
                         <source media="(min-width: 0px)" srcset={`${baseUrl}/i/11/1?url=${encodeURIComponent(item.img)}, ${baseUrl}/i/12/2?url=${encodeURIComponent(item.img)} 2x, ${baseUrl}/i/13/3?url=${encodeURIComponent(item.img)} 3x`}>
-                        <img alt={item.name} loading="lazy" width="1200" height="675" src={`${baseUrl}/i/21/1?url=${encodeURIComponent(item.img)}`}/>
+                        <img class="content_image" alt={item.name} loading="lazy" width="1200" height="675" src={`${baseUrl}/i/21/1?url=${encodeURIComponent(item.img)}`}/>
                     </picture>
                 {/if}
                 <p class="meta {item.url.source.acronym.toLowerCase()}">
@@ -126,7 +126,7 @@
             word-break: break-word;
         }
 
-        &_image img {
+        &_image {
             object-fit: cover;
             height: 114px;
             width: 100%;
@@ -293,7 +293,7 @@
         .content {
             padding: 1.3125rem 1.75rem 1rem 1.75rem;
 
-            &_image img {
+            &_image {
                 height: 15.25rem;
             }
         }
