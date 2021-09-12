@@ -40,7 +40,11 @@
         <article>
             <a class="container" href={item.url.name} target="_blank" rel="noopener" title={`Direkt zu "${item.name}"`}>
                 {#if item.img}
-                    <img class="content_image" src={`${baseUrl}/i/1/1?url=${encodeURIComponent(item.img)}`} alt={item.name} />
+                    <picture class="content_image">
+                        <source media="(min-width: 768px)" srcset={`${baseUrl}/i/21/1, ${baseUrl}/i/22/2 2x, ${baseUrl}/i/23/3 3x`}>
+                        <source media="(min-width: 0px)" srcset={`${baseUrl}/i/11/1, ${baseUrl}/i/12/2 2x, ${baseUrl}/i/13/3 3x`}>
+                        <img alt={item.name} loading="lazy" width="1200" height="450" src={`${baseUrl}/i/21/1?url=${encodeURIComponent(item.img)}`}/>
+                    </picture>
                 {/if}
                 <p class="meta {item.url.source.acronym.toLowerCase()}">
                     {#if item.url.source?.name}
