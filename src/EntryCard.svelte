@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import TagButton from './TagButton.svelte';
+    import {baseUrl} from './common';
 
     export let item;
     export let open = false;
@@ -39,7 +40,7 @@
         <article>
             <a class="container" href={item.url.name} target="_blank" rel="noopener" title={`Direkt zu "${item.name}"`}>
                 {#if item.img}
-                    <img class="content_image" src={item.img} alt={item.name} />
+                    <img class="content_image" src={`${baseUrl}/i/1/1?url=${encodeURIComponent(item.img)}`} alt={item.name} />
                 {/if}
                 <p class="meta {item.url.source.acronym.toLowerCase()}">
                     {#if item.url.source?.name}
