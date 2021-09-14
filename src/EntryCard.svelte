@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import TagButton from './TagButton.svelte';
-    import {baseUrl} from './common';
+    import { baseUrl } from './common';
 
     export let item;
     export let open = false;
@@ -41,9 +41,30 @@
             <a class="container" href={item.url.name} target="_blank" rel="noopener" title={`Direkt zu "${item.name}"`}>
                 {#if item.img}
                     <picture>
-                        <source media="(min-width: 768px)" srcset={`${baseUrl}/i/21/1?url=${encodeURIComponent(item.img)}, ${baseUrl}/i/22/2?url=${encodeURIComponent(item.img)} 2x, ${baseUrl}/i/23/3?url=${encodeURIComponent(item.img)} 3x`}>
-                        <source media="(min-width: 0px)" srcset={`${baseUrl}/i/11/1?url=${encodeURIComponent(item.img)}, ${baseUrl}/i/12/2?url=${encodeURIComponent(item.img)} 2x, ${baseUrl}/i/13/3?url=${encodeURIComponent(item.img)} 3x`}>
-                        <img class="content_image" alt={item.name} loading="lazy" width="1200" height="675" src={`${baseUrl}/i/21/1?url=${encodeURIComponent(item.img)}`}/>
+                        <source
+                            media="(min-width: 768px)"
+                            srcset={`${baseUrl}/i/21/1?url=${encodeURIComponent(
+                                item.img
+                            )}, ${baseUrl}/i/22/2?url=${encodeURIComponent(
+                                item.img
+                            )} 2x, ${baseUrl}/i/23/3?url=${encodeURIComponent(item.img)} 3x`}
+                        />
+                        <source
+                            media="(min-width: 0px)"
+                            srcset={`${baseUrl}/i/11/1?url=${encodeURIComponent(
+                                item.img
+                            )}, ${baseUrl}/i/12/2?url=${encodeURIComponent(
+                                item.img
+                            )} 2x, ${baseUrl}/i/13/3?url=${encodeURIComponent(item.img)} 3x`}
+                        />
+                        <img
+                            class="content_image"
+                            alt={item.name}
+                            loading="lazy"
+                            width="1200"
+                            height="675"
+                            src={`${baseUrl}/i/21/1?url=${encodeURIComponent(item.img)}`}
+                        />
                     </picture>
                 {/if}
                 <p class="meta {item.url.source.acronym.toLowerCase()}">
@@ -276,6 +297,18 @@
 
     .bmvg {
         background-color: #dddfe0;
+    }
+
+    .bmvg {
+        background-color: #dddfe0;
+    }
+
+    .bmf {
+        background-color: #cce4f0;
+    }
+
+    .bmel {
+        background-color: #ccdeda;
     }
 
     @media (min-width: 576px) {
