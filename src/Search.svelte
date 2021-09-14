@@ -203,6 +203,29 @@
                             alt="Bundesministerium für Verkehr und digitale Infrastruktur"
                         />
                         <img src="{frontendUrl}/BpB.svg" alt="Bundeszentrale für politische Bildung" />
+                        <img src="{frontendUrl}/BMG.svg" alt="Bundesministerium für Gesundheit" />
+                        <img src="{frontendUrl}/BMEL.svg" alt="Bundesministerium für Ernährung und Landwirtschaft" />
+                        <img src="{frontendUrl}/BMI.svg" alt="Bundesministerium des Innern, für Bau und Heimat" />
+                        <img
+                            src="{frontendUrl}/BMJV.svg"
+                            alt="Bundesministerium der Justiz und für Verbraucherschutz"
+                        />
+                        <img
+                            src="{frontendUrl}/BMU.svg"
+                            alt="Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit"
+                        />
+                        <img src="{frontendUrl}/BMVg.svg" alt="Bundesministerium der Verteidigung" />
+                        <img
+                            src="{frontendUrl}/BMZ.svg"
+                            alt="Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung"
+                        />
+                        <img src="{frontendUrl}/BSI.svg" alt="Bundesamt für Sicherheit in der Informationstechnik" />
+                        <img src="{frontendUrl}/BMBF.svg" alt="Bundesministerium für Bildung und Forschung" />
+                        <img src="{frontendUrl}/OGD.svg" alt="Open Government Deutschland" />
+                        <img src="{frontendUrl}/BAkoeV_Digitalakademie.svg" alt="Digitalakademie Bund" />
+                        <img src="{frontendUrl}/BAkoeV.svg" alt="BAköV" />
+                        <img src="{frontendUrl}/BDR.svg" alt="BDR" />
+                        <img src="{frontendUrl}/Bundeswehr.svg" alt="Bundeswehr" />
                     </div>
                 </div>
             </div>
