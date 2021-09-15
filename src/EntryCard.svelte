@@ -251,40 +251,32 @@
         color: #4c4f50;
     }
 
-    .bmvi {
-        background-color: #e6f5fb;
-    }
-
-    .bpa {
-        background-color: #f3f4d6;
-    }
-
-    .aa {
-        background-color: #dfd6de;
-    }
-
-    .bmas {
-        background-color: #fdf1d8;
-    }
-
-    .bpb {
-        background-color: #f2ccd8;
-    }
-
-    .bsi {
-        background-color: #cce6e8;
-    }
-
-    .ozg {
+    .bmi {
         background-color: #cce7db;
     }
 
-    .bmbf {
-        background-color: #fef9d8;
+    .bkamt {
+        background-color: #f3f4d9;
+    }
+
+    .bmvi {
+        background-color: #e9f5fa;
+    }
+
+    .aa {
+        background-color: #ded8de;
     }
 
     .bmu {
         background-color: #dee5d7;
+    }
+
+    .bmas {
+        background-color: #fbf1db;
+    }
+
+    .bmbf {
+        background-color: #fef9d8;
     }
 
     .bmg {
@@ -299,8 +291,8 @@
         background-color: #dddfe0;
     }
 
-    .bmvg {
-        background-color: #dddfe0;
+    .bmz {
+        background-color: #ecced8;
     }
 
     .bmf {
