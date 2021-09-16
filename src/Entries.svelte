@@ -57,7 +57,7 @@
                         source {
                             id
                             name
-                            acronym
+                            colorCode
                         }
                     }
                 }

@@ -67,7 +67,7 @@
                         />
                     </picture>
                 {/if}
-                <p class="meta {item.url.source.acronym.toLowerCase()}">
+                <p class="meta" style={`background-color: ${item.url.source.colorCode};`}>
                     {#if item.url.source?.name}
                         {item.url.source.name}
                     {/if}
@@ -249,58 +249,6 @@
         font-size: 1rem;
         line-height: 1.25rem;
         color: #4c4f50;
-    }
-
-    .bmi {
-        background-color: #cce7db;
-    }
-
-    .bkamt {
-        background-color: #f3f4d9;
-    }
-
-    .bmvi {
-        background-color: #e9f5fa;
-    }
-
-    .aa {
-        background-color: #ded8de;
-    }
-
-    .bmu {
-        background-color: #dee5d7;
-    }
-
-    .bmas {
-        background-color: #fbf1db;
-    }
-
-    .bmbf {
-        background-color: #fef9d8;
-    }
-
-    .bmg {
-        background-color: #f5dcd7;
-    }
-
-    .bmjv {
-        background-color: #ccdbe4;
-    }
-
-    .bmvg {
-        background-color: #dddfe0;
-    }
-
-    .bmz {
-        background-color: #ecced8;
-    }
-
-    .bmf {
-        background-color: #cce4f0;
-    }
-
-    .bmel {
-        background-color: #ccdeda;
     }
 
     @media (min-width: 576px) {
