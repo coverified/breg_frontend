@@ -17,7 +17,7 @@ before_script:
 build-image:
   stage: build
   script:
-    - docker build --cache-from $CI_REGISTRY_IMAGE --pull -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - docker build --cache-from $CI_REGISTRY_IMAGE --pull --build-arg CI_COMMIT_REF_SLUG -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
     - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
     - docker push --all-tags $CI_REGISTRY_IMAGE
 
