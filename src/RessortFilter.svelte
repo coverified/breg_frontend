@@ -15,7 +15,7 @@
     }`;
 
     client.request(query).then((data) => {
-        allSources = data;
+        allSources = data.allSources;
     });
 
     const handleSourceKlick = (e, source) => {
