@@ -8,7 +8,7 @@
 
     const query = gql`
         {
-            allTags(where: { highlighted: true }) {
+            allTags(where: { highlighted: true }, orderBy: { name: asc }) {
                 name
                 id
             }
