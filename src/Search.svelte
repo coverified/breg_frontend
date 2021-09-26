@@ -115,7 +115,7 @@
                         {#if totalResults >= 10000}
                             Mehr als
                         {/if}
-                        {new Intl.NumberFormat().format(totalResults)} Artikel gefunden
+                        {new Intl.NumberFormat().format(totalResults)} Ergebnisse gefunden
                     </p>
                     <div class="selection__icons">
                         <button
