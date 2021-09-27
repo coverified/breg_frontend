@@ -86,7 +86,7 @@
         }}
         class={`ressort ${ressortFilter ? 'active' : ''} ${filteroptionen ? 'd-flex' : 'd-mobile-none'}`}
     >
-        Ressorts
+        Ressort
     </button>
     <ul class={`filter__results filter ${ressortFilter ? 'd-block' : 'd-none'}`}>
         <RessortFilter bind:ressorts />

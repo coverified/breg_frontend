@@ -1,8 +1,8 @@
 <script>
-    import {tagFilters, clearTags} from './stores.js';
+    import { tagFilters, clearTags } from './stores.js';
     import TagButton from './TagButton.svelte';
-    import {gql} from 'graphql-request';
-    import {client} from './common';
+    import { gql } from 'graphql-request';
+    import { client } from './common';
 
     export let keyword = undefined;
     export let ressorts = [];
@@ -20,9 +20,10 @@
         }
     `;
 
-    $: value && client.request(query, {value}).then((data) => {
-        autocomplete = value ? data : [];
-    });
+    $: value &&
+        client.request(query, { value }).then((data) => {
+            autocomplete = value ? data : [];
+        });
 
     const unsubscribe = tagFilters.subscribe((value) => {
         activeTags = value;
@@ -66,11 +67,9 @@
         />
         <datalist id="searchTerms">
             {#if autocomplete}
-                {#await autocomplete}
-                {:then data}
+                {#await autocomplete then data}
                     {#each data.autocompleteSearchTerm as term}
-                        <option value="{term}">
-                    {/each}
+                        <option value={term} />{/each}
                 {/await}
             {/if}
         </datalist>
@@ -116,7 +115,7 @@
         outline: 0;
         font-size: 1.5625rem;
         color: #000;
-        padding: 0 0 0.75rem 0;
+        padding: 0;
         background: transparent;
         transition: border-color 0.2s;
 
@@ -158,6 +157,10 @@
     @media (min-width: 992px) {
         .form__container {
             flex-direction: row;
+
+            &__field {
+                padding: 0 0 0.75rem 0;
+            }
         }
     }
 </style>
