@@ -72,7 +72,8 @@
         Thema
     </button>
     {#if tagFilter}
-        <ul class={`filter filter__results ${tagFilter ? 'd-block' : ''}`}>
+        <p class="filter-label">Verwandte Themen</p>
+        <ul class={`filter filter__results mt-0 ${tagFilter ? 'd-block' : ''}`}>
             {#each allTags as tag (tag.id)}
                 <TagButton {tag} />
             {/each}
@@ -88,7 +89,7 @@
     >
         Ressort
     </button>
-    <ul class={`filter__results filter ${ressortFilter ? 'd-block' : 'd-none'}`}>
+    <ul class={`filter__results filter scrollable_menu ${ressortFilter ? 'd-block' : 'd-none'}`}>
         <RessortFilter bind:ressorts />
     </ul>
     <button
@@ -126,7 +127,8 @@
         margin-top: 1.625rem;
         padding-left: 0;
         list-style: none;
-        animation: growDown 300ms ease-in-out forwards;
+        animation: growDown 100ms ease-in;
+        overflow: hidden;
         transform-origin: top center;
         margin-bottom: 1.25rem;
 
@@ -183,11 +185,16 @@
 
             &.active {
                 &:after {
-                    transform: rotate(225deg);
+                    transform: translateY(25%) rotate(225deg);
                     transition: transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
                 }
             }
         }
+    }
+
+    .scrollable_menu {
+        overflow: auto;
+        max-height: 16.5rem;
     }
 
     .d-mobile-none {
@@ -212,13 +219,10 @@
 
     @keyframes growDown {
         0% {
-            transform: scaleY(0);
-        }
-        80% {
-            transform: scaleY(1.1);
+            opacity: 0;
         }
         100% {
-            transform: scaleY(1);
+            opacity: 1;
         }
     }
 
@@ -242,6 +246,10 @@
             grid-area: ressort;
         }
 
+        .scrollable_menu {
+            max-height: 18.75rem;
+        }
+
         .date {
             grid-area: date;
         }
@@ -251,6 +259,15 @@
             padding-left: 0;
         }
 
+        .filter-label {
+            grid-area: filter-heading;
+            margin-bottom: 0.625rem;
+        }
+
+        .mt-0 {
+            margin-top: 0;
+        }
+
         .filter__container {
             display: grid;
             grid-template-columns: 11.25rem 11.25rem 1fr;
@@ -258,8 +275,8 @@
             gap: 0px 0px;
             grid-template-areas:
                 'tag ressort date'
+                'filter-heading filter-heading filter-heading'
                 'filter-label filter-label filter-label';
-
             button {
                 width: 8.5rem;
 
