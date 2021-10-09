@@ -1,11 +1,20 @@
 <script>
+    export let timeout = 100;
+
+    let visible = false;
+
+    setTimeout(() => {
+        visible = true;
+    }, timeout);
 </script>
 
-<div class="spinner">
-    <div class="bounce1"></div>
-    <div class="bounce2"></div>
-    <div class="bounce3"></div>
-</div>
+{#if visible}
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+{/if}
 
 <style type="text/scss">
     .spinner {
@@ -37,17 +46,22 @@
     }
 
     @-webkit-keyframes sk-bouncedelay {
-        0%, 80%, 100% { -webkit-transform: scale(0) }
-        40% { -webkit-transform: scale(1.0) }
+        0%, 80%, 100% {
+            -webkit-transform: scale(0)
+        }
+        40% {
+            -webkit-transform: scale(1.0)
+        }
     }
 
     @keyframes sk-bouncedelay {
         0%, 80%, 100% {
             -webkit-transform: scale(0);
             transform: scale(0);
-        } 40% {
-              -webkit-transform: scale(1.0);
-              transform: scale(1.0);
-          }
+        }
+        40% {
+            -webkit-transform: scale(1.0);
+            transform: scale(1.0);
+        }
     }
 </style>
