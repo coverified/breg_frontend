@@ -15,26 +15,24 @@
         }
     `;
 
-    client.request(query).then((data) => {
-        allTags = data;
+    allTags = client.request(query).then((data) => {
+        return data
     });
 </script>
 
 <div class="search__tags">
     <p>Häufige Themen</p>
-    {#if allTags}
-        {#await allTags}
-            <Loader />
-        {:then tags}
-            {#each tags.allTags as tag (tag.id)}
-                <TagButton {tag} />
-            {:else}
-                <p>Keine häufigen Themen gefunden</p>
-            {/each}
-        {:catch error}
-            <p>Fehler beim laden der häufigen Themen</p>
-        {/await}
-    {/if}
+    {#await allTags}
+        <Loader />
+    {:then tags}
+        {#each tags.allTags as tag (tag.id)}
+            <TagButton {tag} />
+        {:else}
+            <p>Keine häufigen Themen gefunden</p>
+        {/each}
+    {:catch error}
+        <p>Fehler beim laden der häufigen Themen</p>
+    {/await}
 </div>
 
 <style type="text/scss">
