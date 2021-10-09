@@ -76,19 +76,19 @@
     };
 
     if (page !== -1) {
-        client.request(query, variables).then((data) => {
-            searchEntries = data;
+        searchEntries = client.request(query, variables).then((data) => {
             totalResults = data.searchEntries.totalResults;
             allUsedTags = data.searchEntries.results;
+            return data;
         });
     }
 </script>
 
-{#if searchEntries}
-    {#await searchEntries}
-        <Loader />
-    {:then items}
-        {#each items.searchEntries.results as item}
+{#await searchEntries}
+    <Loader />
+{:then data}
+    {#if data?.searchEntries?.results}
+        {#each data.searchEntries.results as item}
             {#if listView}
                 <EntryList {item} />
             {:else}
@@ -97,10 +97,10 @@
         {:else}
             <li class="no-bullet">Keine passenden Suchergebnisse gefunden</li>
         {/each}
-    {:catch error}
-        <p>Fehler beim laden der Daten</p>
-    {/await}
-{/if}
+    {/if}
+{:catch error}
+    <p>Fehler beim laden der Daten</p>
+{/await}
 
 <style>
     li.no-bullet {
