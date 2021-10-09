@@ -16,8 +16,8 @@
         }
     `;
 
-    client.request(query).then((data) => {
-        allSources = data.allSources;
+    allSources = client.request(query).then((data) => {
+        return data.allSources;
     });
 
     const handleSourceKlick = (e, source) => {
@@ -31,30 +31,28 @@
     };
 </script>
 
-{#if allSources}
-    {#await allSources}
-        <Loader />
-    {:then items}
-        {#each items as item (item.id)}
-            <li>
-                <input
-                    type="checkbox"
-                    id={item.id}
-                    on:change={(e) => {
-                        handleSourceKlick(e, item);
-                    }}
-                />
-                <label for={item.id}>
-                    {item.name}
-                </label>
-            </li>
-        {:else}
-            <li>Keine Ressorts gefunden</li>
-        {/each}
-    {:catch error}
-        <li>Fehler beim laden der Ressorts</li>
-    {/await}
-{/if}
+{#await allSources}
+    <Loader />
+{:then items}
+    {#each items as item (item.id)}
+        <li>
+            <input
+                type="checkbox"
+                id={item.id}
+                on:change={(e) => {
+                    handleSourceKlick(e, item);
+                }}
+            />
+            <label for={item.id}>
+                {item.name}
+            </label>
+        </li>
+    {:else}
+        <li>Keine Ressorts gefunden</li>
+    {/each}
+{:catch error}
+    <li>Fehler beim laden der Ressorts</li>
+{/await}
 
 <style type="text/scss">
     input {
