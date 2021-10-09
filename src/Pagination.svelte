@@ -65,7 +65,6 @@
         class="page_forward"
         on:click|preventDefault={() => {
             setCurrent(currentPage + 1);
-            scroll(selection);
         }}
     >
         <span>
