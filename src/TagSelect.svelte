@@ -16,7 +16,7 @@
     `;
 
     allTags = client.request(query).then((data) => {
-        return data
+        return data;
     });
 </script>
 
