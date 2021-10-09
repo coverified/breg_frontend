@@ -14,12 +14,30 @@
     let activeTags;
     let selection;
     let tags = [];
+    let appRoot;
+
+    const scrollToTop = () => {
+        if(appRoot) {
+            setTimeout(() => {
+                const rootElTop = document.querySelector('coverified-breg-search')?.getBoundingClientRect()?.top || appRoot?.getBoundingClientRect()?.top;
+                const introElHeight = appRoot.querySelector('.intro')?.getBoundingClientRect()?.height || 0;
+                const pageHeaderElHeight = document.querySelector('header.bpa-header')?.getBoundingClientRect()?.height || 0;
+
+                window.scrollTo({
+                    top: window.scrollY + rootElTop + introElHeight + pageHeaderElHeight,
+                    behavior: 'smooth',
+                });
+            }, 1);
+        }
+    };
 
     const changeSources = (ressorts) => {
         currentPage = -1;
+
         setTimeout(() => {
             currentPage = 0;
         }, 1);
+
         return ressorts ? ressorts : '';
     };
 
@@ -93,7 +111,7 @@
 
 <Icons />
 
-<section>
+<section bind:this={appRoot}>
     <header>
         <div class="intro">
             <div class="breadcrumb">Pilotprojekt: Netzwerk für digitale Aufklärung</div>
@@ -109,7 +127,7 @@
     </header>
     <main>
         {#if keyword !== undefined || tags.length}
-            <div class="selection" bind:this={selection}>
+            <div class="selection">
                 {#if totalResults !== '' && totalResults !== undefined && totalResults !== 0}
                     <p>
                         {#if totalResults >= 10000}
@@ -150,6 +168,7 @@
                         {endDate}
                         {grid}
                         {tags}
+                        {scrollToTop}
                         sourceIds={ressorts}
                         limit={8}
                         page={currentPage}
@@ -160,7 +179,7 @@
             </ul>
             {#if totalResults && totalResults !== '' && totalResults > 8}
                 <ul class="pagination">
-                    <Pagination {totalResults} bind:currentPage {selection} />
+                    <Pagination {totalResults} bind:currentPage />
                 </ul>
             {/if}
         {:else}
