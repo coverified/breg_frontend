@@ -1,7 +1,6 @@
 <script>
     export let currentPage = 0;
     export let totalResults;
-    export let selection;
 
     let per_page = 8;
 
@@ -40,15 +39,6 @@
         setArrPages();
         return currentPage;
     }
-
-    function scroll(selection) {
-        // account for sticky header size
-        window.scrollTo({
-            top: window.scrollY + selection.getBoundingClientRect().y,
-            left: 0,
-            behavior: 'smooth',
-        });
-    }
 </script>
 
 {#each arr_pages as i}
@@ -58,7 +48,6 @@
                 title="Zur Seite {i} wechseln"
                 on:click={() => {
                     setCurrent(i - 1);
-                    scroll(selection);
                 }}
             >
                 {i}

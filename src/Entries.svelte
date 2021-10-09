@@ -16,6 +16,7 @@
     export let endDate;
     export let grid;
     export let allUsedTags = [];
+    export let scrollToTop = () => {};
 
     let searchEntries;
 
@@ -81,6 +82,7 @@
             allUsedTags = data.searchEntries.results;
             return data;
         });
+        scrollToTop();
     }
 </script>
 
