@@ -29,6 +29,7 @@
         padding: 0.5rem 0.875rem;
         background-color: #bec5c9;
         border: solid 1px #bec5c9;
+        color: #333;
         font-size: 1.125rem;
         margin: 0px 0.625rem 0.625rem 0;
         border-radius: 3px;

@@ -128,7 +128,12 @@
         &::-webkit-search-results-button,
         &::-webkit-search-results-decoration {
             display: none !important;
+            -webkit-appearance:none !important;
         }
+    }
+
+    input[type="search"]::-webkit-search-decoration {
+        display: none !important;
     }
 
     .btn {
