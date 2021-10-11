@@ -261,6 +261,7 @@
         --color-text-muted: #4c4f50;
         --color-text-on-primary: #ffffff;
         --color-text-meta: #0071ad;
+        --color-body: #333;
 
         all: unset;
         box-sizing: border-box;

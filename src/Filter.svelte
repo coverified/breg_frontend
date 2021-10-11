@@ -140,6 +140,7 @@
 
     .filter__container {
         margin-top: 1.875rem;
+        color: var(--color-body);
 
         &__btns {
             list-style: none;
@@ -160,6 +161,7 @@
         button {
             appearance: none;
             background-color: #eeeff1;
+            color: var(--color-body);
             position: relative;
             width: 100%;
             font-size: 1.5rem;
