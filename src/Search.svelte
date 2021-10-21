@@ -221,7 +221,7 @@
                             src="{frontendUrl}/BMVI.svg"
                             alt="Bundesministerium für Verkehr und digitale Infrastruktur"
                         />
-                        <img src="{frontendUrl}/BpB.svg" alt="Bundeszentrale für politische Bildung" />
+                        <img src="{frontendUrl}/BKM.svg" alt="Beauftragter der Bundesregierung für Kultur und Medien" />
                         <img src="{frontendUrl}/BMG.svg" alt="Bundesministerium für Gesundheit" />
                         <img src="{frontendUrl}/BMEL.svg" alt="Bundesministerium für Ernährung und Landwirtschaft" />
                         <img src="{frontendUrl}/BMI.svg" alt="Bundesministerium des Innern, für Bau und Heimat" />
@@ -245,6 +245,7 @@
                         <img src="{frontendUrl}/BAkoeV.svg" alt="BAköV" />
                         <img src="{frontendUrl}/BDR.svg" alt="BDR" />
                         <img src="{frontendUrl}/Bundeswehr.svg" alt="Bundeswehr" />
+                        <img src="{frontendUrl}/BpB.svg" alt="Bundeszentrale für politische Bildung" />
                     </div>
                 </div>
             </div>
