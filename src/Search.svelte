@@ -15,7 +15,7 @@
     let selection;
     let tags = [];
     let appRoot;
-    let startDate = '2021-12-09'
+    let startDate = '2021-12-08'
 
     const scrollToTop = () => {
         if(appRoot) {

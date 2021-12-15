@@ -50,7 +50,7 @@
     }
 
     const clearDates = () => {
-        startDate = '2021-12-09';
+        startDate = '2021-12-08';
         endDate = undefined;
         clearCheckboxes();
     }
