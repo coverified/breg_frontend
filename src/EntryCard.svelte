@@ -129,7 +129,7 @@
         border-radius: 0.3125rem;
         background-color: #fff;
         overflow: hidden;
-        filter: drop-shadow(0 0 0.42rem rgba(0, 0, 0, 0.15));
+        box-shadow: 0 0 0.42rem rgba(0, 0, 0, 0.15);
         position: relative;
     }
 
