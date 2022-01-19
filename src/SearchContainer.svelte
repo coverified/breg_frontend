@@ -18,6 +18,7 @@
         <SearchField bind:keyword bind:ressorts bind:startDate bind:endDate />
         {#if keyword !== undefined || tags.length}
             <Filter bind:ressorts bind:tags bind:startDate bind:endDate {allUsedTags} />
+            <p class="small">Bitte beachten Sie, dass Ihnen aktuell nur Ergebnisse aus der aktuellen Legislaturperiode (Beginn am 08.12.2021) angezeigt werden. Für eine erweiterte Ausgabe passen Sie bitte den Suchzeitraum im Menü an.</p>
         {:else}
             <TagSelect />
         {/if}
@@ -42,6 +43,11 @@
         color: #004b76;
         margin-bottom: 1.375rem;
         margin-top: 0;
+    }
+
+    p.small {
+        font-size: .75rem;
+        margin-bottom: 0;
     }
 
     @media (max-width: 992px) {

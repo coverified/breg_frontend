@@ -98,6 +98,7 @@
             {/if}
         {:else}
             <li class="no-bullet">Keine passenden Suchergebnisse gefunden</li>
+            <li class="no-bullet small">Bitte beachten Sie, dass Ihnen aktuell nur Ergebnisse aus der aktuellen Legislaturperiode (Beginn am 08.12.2021) angezeigt werden. Für eine erweiterte Ausgabe passen Sie bitte den Suchzeitraum im Menü an.</li>
         {/each}
     {/if}
 {:catch error}
@@ -109,5 +110,10 @@
         grid-column: 1 / -1;
         font-size: 1.5rem;
         margin: 0 auto 3.3125rem;
+    }
+
+    li.small {
+        font-size: .75rem;
+        text-align: center;
     }
 </style>
