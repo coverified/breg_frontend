@@ -208,47 +208,6 @@
                     </a>
                 </div>
                 <img src="{frontendUrl}/heroteaser.jpg" alt="Das Projekt: Netzwerk für digitale Aufklärung" />
-                <div class="ressorts__container">
-                    <h2>Wir sind Teil des Pilotprojekts</h2>
-                    <div class="img_container">
-                        <img
-                            src="{frontendUrl}/DigStMin.svg"
-                            alt="Die Beauftragte der Bundesregierung für Digitalisierung"
-                        />
-                        <img src="{frontendUrl}/AA.svg" alt="Auswärtiges Amt" />
-                        <img src="{frontendUrl}/BMAS.svg" alt="Bundesministerium für Arbeit und Soziales" />
-                        <img src="{frontendUrl}/BPA.svg" alt="Presse- und Informationsamt der Bundesregierung" />
-                        <img
-                            src="{frontendUrl}/BMVI.svg"
-                            alt="Bundesministerium für Verkehr und digitale Infrastruktur"
-                        />
-                        <img src="{frontendUrl}/BKM.svg" alt="Beauftragter der Bundesregierung für Kultur und Medien" />
-                        <img src="{frontendUrl}/BMG.svg" alt="Bundesministerium für Gesundheit" />
-                        <img src="{frontendUrl}/BMEL.svg" alt="Bundesministerium für Ernährung und Landwirtschaft" />
-                        <img src="{frontendUrl}/BMI.svg" alt="Bundesministerium des Innern, für Bau und Heimat" />
-                        <img
-                            src="{frontendUrl}/BMJV.svg"
-                            alt="Bundesministerium der Justiz und für Verbraucherschutz"
-                        />
-                        <img
-                            src="{frontendUrl}/BMU.svg"
-                            alt="Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit"
-                        />
-                        <img src="{frontendUrl}/BMVg.svg" alt="Bundesministerium der Verteidigung" />
-                        <img
-                            src="{frontendUrl}/BMZ.svg"
-                            alt="Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung"
-                        />
-                        <img src="{frontendUrl}/BSI.svg" alt="Bundesamt für Sicherheit in der Informationstechnik" />
-                        <img src="{frontendUrl}/BMBF.svg" alt="Bundesministerium für Bildung und Forschung" />
-                        <img src="{frontendUrl}/OGD.svg" alt="Open Government Deutschland" />
-                        <img src="{frontendUrl}/BAkoeV_Digitalakademie.svg" alt="Digitalakademie Bund" />
-                        <img src="{frontendUrl}/BAkoeV.svg" alt="BAköV" />
-                        <img src="{frontendUrl}/BDR.svg" alt="BDR" />
-                        <img src="{frontendUrl}/Bundeswehr.svg" alt="Bundeswehr" />
-                        <img src="{frontendUrl}/BpB.svg" alt="Bundeszentrale für politische Bildung" />
-                    </div>
-                </div>
             </div>
         {/if}
     </main>
@@ -339,23 +298,6 @@
             position: relative;
             margin-bottom: 1rem;
             margin-top: 0.625rem;
-        }
-
-        .ressorts__container {
-            margin-top: 1.5rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-
-            h2 {
-                margin-bottom: 2.5rem;
-            }
-
-            .img_container {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(3, 1fr);
-                grid-gap: 1rem;
-            }
         }
 
         a,
@@ -465,19 +407,6 @@
             grid-gap: 1.5rem;
             margin-bottom: 2rem;
             grid-template-columns: repeat(2, minmax(auto, 25rem));
-        }
-
-        .project__container {
-            .ressorts__container {
-                margin-top: 4.25rem;
-                padding-right: 4.375rem;
-                padding-left: 4.375rem;
-
-                .img_container {
-                    grid-template-columns: repeat(3, 1fr);
-                    grid-template-rows: repeat(2, 1fr);
-                }
-            }
         }
     }
 
